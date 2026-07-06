@@ -361,10 +361,17 @@ function mobileFirstSection() {
         <p class="lead">«Todo el mundo diseña mobile-first.» Sí — pero ¿por qué, con qué dato?
         Tres cifras (con su fuente) sostienen la decisión.</p>
       </div>
-      <div class="gancho__kpis" style="grid-template-columns:1fr" data-reveal>
-        ${Kpi({ num: "52,27 %", label: "del tráfico web mundial es móvil (Q1 2026) — mayoritario, pero fluctúa: un año antes era el 62,39 %. Varía mucho por país y sector." })}
-        ${Kpi({ num: "96,2 %", label: "de los usuarios de internet del mundo se conecta con el móvil al menos alguna vez. Casi nadie vive fuera del móvil." })}
-        ${Kpi({ num: "100 %", label: "de los sitios se evalúan con indexación mobile-first: Google posiciona mirando tu versión móvil, exista o no la de escritorio." })}
+      <div class="grid grid--2" style="align-items:center">
+        <div class="gancho__kpis" style="grid-template-columns:1fr" data-reveal>
+          ${Kpi({ num: "52,27 %", label: "del tráfico web mundial es móvil (Q1 2026) — mayoritario, pero fluctúa: un año antes era el 62,39 %. Varía mucho por país y sector." })}
+          ${Kpi({ num: "96,2 %", label: "de los usuarios de internet del mundo se conecta con el móvil al menos alguna vez. Casi nadie vive fuera del móvil." })}
+          ${Kpi({ num: "100 %", label: "de los sitios se evalúan con indexación mobile-first: Google posiciona mirando tu versión móvil, exista o no la de escritorio." })}
+        </div>
+        <!-- width/height reservan el espacio (lección CLS) y lazy evita cargarla antes de tiempo -->
+        <img data-reveal src="${escapeHtml(appUrl("/assets/mobile-first.jpg"))}"
+             alt="Ilustración: una mano sostiene un móvil con una interfaz en primer plano, nítido, mientras el monitor de escritorio queda desenfocado detrás — el móvil es la prioridad."
+             width="1400" height="1047" loading="lazy"
+             style="border-radius:var(--radius); box-shadow:var(--shadow-sm)" />
       </div>
       <p class="src-note" data-reveal>Fuentes: StatCounter vía Statista (tráfico, Q1 2026) · DataReportal
       (penetración de uso) · Google Search Central (mobile-first indexing). El reparto de tráfico depende de la
