@@ -1,0 +1,206 @@
+/* =========================================================================
+   deck.css — Tema RevealJS del módulo Presencia Digital (ESIC).
+   Reutiliza los tokens del proyecto (tokens.css): NO define un sistema
+   paralelo de color/tipografía. Slides claras por defecto (minimalista,
+   mucho aire); portadas de sección en azul; slides "🖥️ en directo" en
+   oscuro invertido para señalar que Carlos sale del deck.
+   El acento BBVA (--bbva-*) marca SOLO el contenido ligado al caso.
+   ========================================================================= */
+@import "./tokens.css";
+
+:root {
+  /* Acento temático del caso (no es la marca del deck, es el hilo BBVA) */
+  --bbva-ink: #072146;
+  --bbva-blue: #1464f4;
+  --bbva-soft: rgba(20, 100, 244, .10);
+}
+
+/* ----------------------------------------------------- Lienzo del deck */
+.reveal-viewport { background-color: var(--c-bg); }
+
+.reveal {
+  font-family: var(--font-body);
+  color: var(--c-body);
+  font-size: 30px;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: var(--font-display);
+  color: var(--c-ink);
+  letter-spacing: .01em;
+  line-height: 1.04;
+  margin: 0 0 .4em;
+  text-transform: none;
+}
+.reveal h1 { font-size: 2.3em; }
+.reveal h2 { font-size: 1.7em; }
+.reveal h3 { font-size: 1.15em; }
+.reveal p { line-height: 1.45; }
+.reveal strong { color: var(--c-accent-blue); }
+.reveal a { color: var(--c-accent-blue); }
+.reveal ul, .reveal ol { display: block; margin-left: 1em; }
+.reveal li { margin: .35em 0; }
+.reveal .muted { color: var(--c-ink-soft); }
+
+/* Kicker (eyebrow) con barra de acento */
+.reveal .kicker {
+  display: inline-flex; align-items: center; gap: .55em;
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .16em;
+  font-size: .62em; color: var(--c-accent-blue); margin-bottom: .75em;
+}
+.reveal .kicker::before { content: ""; width: 2.2em; height: .15em; background: var(--c-accent); border-radius: 2px; }
+
+/* Frase-idea central (una idea por slide) */
+.reveal .statement {
+  font-family: var(--font-display);
+  font-size: 1.55em; line-height: 1.08; color: var(--c-ink);
+  max-width: 22em; margin-inline: auto;
+}
+.reveal .statement .hl { color: var(--c-accent-blue); }
+
+/* Cifra grande estilo KPI */
+.reveal .big { font-family: var(--font-display); font-size: 3.4em; line-height: .9; color: var(--c-accent-blue); }
+.reveal .statrow { display: flex; gap: 1.6em; justify-content: center; margin-top: .5em; }
+.reveal .stat { text-align: center; max-width: 10em; }
+.reveal .stat .lab { display: block; font-size: .6em; color: var(--c-ink-soft); margin-top: .25em; }
+
+/* Pie de fuente — SIEMPRE visible en slides con datos (no solo en notas) */
+.reveal .src {
+  position: absolute; bottom: -1.6em; left: 0; right: 0;
+  font-size: .5em; color: var(--c-ink-soft); text-align: center;
+}
+
+/* --------------------- Slides oscuras (portadas, secciones azules, live) */
+.slide--blue, .slide--cover, .slide--live { color: #fff; }
+.reveal .slide--blue h1, .reveal .slide--blue h2, .reveal .slide--blue h3,
+.reveal .slide--cover h1, .reveal .slide--cover h2, .reveal .slide--cover h3,
+.reveal .slide--live h1, .reveal .slide--live h2, .reveal .slide--live h3 { color: #fff; }
+.reveal .slide--blue p, .reveal .slide--blue li,
+.reveal .slide--cover p, .reveal .slide--live p { color: var(--c-white-soft); }
+.reveal .slide--blue strong, .reveal .slide--cover strong, .reveal .slide--live strong { color: var(--c-accent); }
+.reveal .slide--blue .kicker, .reveal .slide--cover .kicker, .reveal .slide--live .kicker { color: var(--c-accent); }
+.reveal .slide--blue .muted, .reveal .slide--cover .muted, .reveal .slide--live .muted { color: var(--c-white-soft); }
+.reveal .slide--blue .statement, .reveal .slide--cover .statement, .reveal .slide--live .statement { color: #fff; }
+/* Reveal pinta el fondo de sección vía data-background-color en el HTML;
+   estas reglas cubren el contenido. */
+
+/* Número de sección gigante en las portadas */
+.reveal .sec-num {
+  position: absolute; right: -.06em; bottom: -.75em;
+  font-family: var(--font-display); font-size: 7.5em; line-height: 1;
+  color: #fff; opacity: .12; pointer-events: none;
+}
+
+/* --------------------------------- Slides "🖥️ en directo" (oscuro invertido) */
+.slide--live { color: #fff; }
+.reveal .slide--live h1, .reveal .slide--live h2 { color: #fff; }
+.reveal .slide--live p { color: rgba(255, 255, 255, .75); }
+.reveal .slide--live .live-chip {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .45em 1.1em; border-radius: 999px; margin-bottom: 1em;
+  border: 1.5px dashed var(--c-accent); color: var(--c-accent);
+  font: 600 .7em/1 var(--font-display); letter-spacing: .12em; text-transform: uppercase;
+}
+.reveal .slide--live .live-chip::before { content: "●"; animation: live-blink 1.4s infinite; }
+@keyframes live-blink { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .reveal .slide--live .live-chip::before { animation: none; } }
+
+/* ------------------------------------------------- Acento BBVA (el caso) */
+.reveal .bbva {
+  background: var(--bbva-soft);
+  border-left: 5px solid var(--bbva-blue);
+  border-radius: 10px;
+  padding: .6em .9em;
+  text-align: left;
+}
+.reveal .bbva strong { color: var(--bbva-blue); }
+.reveal .bbva-chip {
+  display: inline-block; padding: .3em .8em; border-radius: 999px;
+  background: var(--bbva-ink); color: #fff;
+  font: 600 .58em/1 var(--font-display); letter-spacing: .1em; text-transform: uppercase;
+}
+.reveal .slide--blue .bbva { background: rgba(255, 255, 255, .1); border-left-color: var(--c-accent); }
+
+/* ------------------------------------------------- Logo persistente */
+.deck-logo { position: fixed; top: 26px; left: 34px; height: 32px; width: auto; z-index: 40; pointer-events: none; }
+.deck-logo--white { display: none; }
+body.dark-slide .deck-logo--blue { display: none; }
+body.dark-slide .deck-logo--white { display: block; }
+
+/* ------------------------------------------------- Controles / progreso */
+.reveal .progress { color: var(--c-accent-blue); height: 5px; }
+.reveal .controls { color: var(--c-accent-blue); }
+.reveal .slide-number { background: transparent; color: var(--c-ink-soft); font-family: var(--font-body); }
+body.dark-slide .reveal .controls { color: #fff; }
+body.dark-slide .reveal .slide-number { color: rgba(255, 255, 255, .6); }
+
+/* ------------------------------------------------- Rejillas de tarjetas */
+.reveal .cards { display: grid; gap: .7em; grid-template-columns: repeat(3, 1fr); margin-top: .6em; }
+.reveal .cards--2 { grid-template-columns: repeat(2, 1fr); }
+.reveal .cards--4 { grid-template-columns: repeat(4, 1fr); }
+.reveal .ccard {
+  background: var(--c-bg); border: 1px solid var(--c-line); border-top: 4px solid var(--c-accent);
+  border-radius: 14px; padding: .7em .8em; text-align: left; box-shadow: var(--shadow-sm);
+}
+.reveal .ccard h3 { font-size: .92em; margin-bottom: .2em; }
+.reveal .ccard p { font-size: .62em; margin: 0; color: var(--c-ink-soft); }
+.reveal .ccard .n { font-family: var(--font-display); color: var(--c-accent-blue); font-size: .75em; }
+
+/* Lista con checks */
+.reveal .checks { list-style: none; margin: .4em 0 0; text-align: left; }
+.reveal .checks li { position: relative; padding-left: 1.6em; margin: .5em 0; font-size: .8em; }
+.reveal .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--c-accent-blue); font-weight: 700; }
+
+/* Columnas asimétricas */
+.reveal .split { display: grid; grid-template-columns: .95fr 1.05fr; gap: 1.3em; align-items: center; text-align: left; }
+
+/* ------------------------------------------------------------- Tablas */
+.reveal table.tbl { width: 100%; border-collapse: collapse; font-size: .62em; margin-top: .6em; }
+.reveal .tbl th {
+  font-family: var(--font-display); letter-spacing: .05em; text-transform: uppercase;
+  color: var(--c-ink); border-bottom: 3px solid var(--c-accent-blue);
+  padding: .5em .7em; text-align: left; font-size: .85em;
+}
+.reveal .tbl td { border-bottom: 1px solid var(--c-line); padding: .55em .7em; text-align: left; vertical-align: top; }
+.reveal .tbl tr.hoy td { background: var(--c-accent-soft); }
+.reveal .tbl td:first-child { font-weight: 600; color: var(--c-ink); white-space: nowrap; }
+
+/* ------------------------------------------------------------ Diagramas */
+.reveal .diagram { margin: .5em auto 0; max-width: 100%; }
+.reveal .diagram text { font-family: var(--font-body); }
+.reveal .d-cap { font-size: .6em; color: var(--c-ink-soft); margin-top: .4em; }
+
+/* ------------------------------------------------- Proceso (4 etapas) */
+.reveal .proceso { display: flex; gap: .5em; align-items: stretch; margin-top: .7em; }
+.reveal .proceso .etapa {
+  flex: 1; border: 1px solid var(--c-line); border-radius: 12px; padding: .6em .6em;
+  text-align: left; background: var(--c-bg); box-shadow: var(--shadow-sm);
+}
+.reveal .proceso .etapa h3 { font-size: .85em; margin: .15em 0 .1em; }
+.reveal .proceso .etapa p { font-size: .55em; color: var(--c-ink-soft); margin: 0; }
+.reveal .proceso .etapa .fid { display: block; height: .35em; border-radius: 4px; background: var(--c-accent-soft); }
+.reveal .proceso .etapa:nth-child(3) .fid { background: rgba(0, 71, 233, .35); }
+.reveal .proceso .etapa:nth-child(5) .fid { background: rgba(0, 71, 233, .6); }
+.reveal .proceso .etapa:nth-child(7) .fid { background: var(--c-accent-blue); }
+.reveal .proceso .arrow { align-self: center; color: var(--c-accent-blue); font-size: 1.2em; }
+.reveal .proceso .etapa.hoy { border: 2px solid var(--c-accent-blue); }
+.reveal .proceso .etapa .who { display: inline-block; margin-top: .3em; font-size: .5em; color: var(--c-accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+
+/* ------------------------------------------------- Ejercicio: temporizador */
+.reveal .timer { display: flex; flex-direction: column; align-items: center; gap: .4em; }
+.reveal .timer__display {
+  font-family: var(--font-display); font-size: 3.6em; line-height: 1;
+  color: var(--c-ink); font-variant-numeric: tabular-nums;
+}
+.reveal .timer__display.is-low { color: #c01d1d; }
+.reveal .timer__btns { display: flex; gap: .5em; }
+.reveal .timer__btns button {
+  font: 600 .55em/1 var(--font-body); padding: .8em 1.4em; border-radius: 999px;
+  border: 1.5px solid var(--c-accent-blue); background: transparent; color: var(--c-accent-blue);
+  cursor: pointer;
+}
+.reveal .timer__btns button:hover { background: var(--c-accent-soft); }
+.reveal .timer__btns button.primary { background: var(--c-accent-blue); color: #fff; }
+
+/* ------------------------------------------------- Notas visibles menores */
+.reveal .foot-hint { font-size: .55em; color: var(--c-ink-soft); margin-top: 1.2em; }

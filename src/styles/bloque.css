@@ -1,0 +1,140 @@
+/* =========================================================================
+   bloque.css — Estilos de las páginas de bloque (/bloques/bN.html):
+   hero con número decorativo, secciones de teoría, banda del reto,
+   recursos y estado bloqueado a página completa.
+   ========================================================================= */
+
+/* ------------------------------------------------------- Hero del bloque */
+.bloque-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+/* Número gigante decorativo, en el color del bloque */
+.bloque-hero__num {
+  position: absolute;
+  right: -.04em; bottom: -.22em;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 32vw, 26rem);
+  line-height: 1;
+  color: var(--c-accent-blue);
+  opacity: .14;
+  user-select: none;
+  pointer-events: none;
+}
+.bloque-hero__inner { position: relative; z-index: 1; }
+.bloque-hero__title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  text-transform: uppercase;
+  max-width: 16ch;
+  margin: .3em 0 .2em;
+}
+.bloque-hero__meta { margin-top: var(--sp-5); }
+
+/* --------------------------------------------------- Secciones de teoría */
+.teoria-head { max-width: 46rem; margin-bottom: var(--sp-6); }
+
+/* UX vs UI: dos columnas con pregunta destacada */
+.uxui__q {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--c-accent-blue);
+  margin: 0 0 var(--sp-3);
+}
+.uxui__list { display: grid; gap: var(--sp-2); color: var(--c-ink-soft); }
+.uxui__list li::marker { color: var(--c-accent); }
+
+/* Conceptos clave: término grande + definición */
+.concepto__term {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin: 0 0 var(--sp-2);
+}
+.concepto__def { margin: 0; color: var(--c-ink-soft); font-size: .95rem; }
+
+/* ------------------------------------------------------- Banda del reto */
+.reto { display: grid; gap: var(--sp-6); }
+@media (min-width: 920px) {
+  .reto { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--sp-8); align-items: center; }
+}
+/* En la banda del reto los KPIs se apilan (columna lateral estrecha) */
+.reto .gancho__kpis { grid-template-columns: 1fr; gap: var(--sp-5); }
+.reto__title { font-size: clamp(1.9rem, 4vw, 3rem); margin: var(--sp-3) 0; }
+.reto__check { list-style: none; padding: 0; display: grid; gap: var(--sp-3); }
+.reto__check li {
+  position: relative;
+  padding-left: 1.9rem;
+  font-size: 1.02rem;
+}
+/* Check dibujado con pseudo-elemento (sin imágenes) */
+.reto__check li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .3em;
+  width: .95em; height: .5em;
+  border-left: 3px solid var(--c-accent);
+  border-bottom: 3px solid var(--c-accent);
+  transform: rotate(-45deg);
+}
+
+/* ------------------------------------------------------------ Recursos */
+.recursos { display: grid; gap: var(--sp-3); max-width: 44rem; }
+.recurso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--c-ink);
+  font-weight: 600;
+  transition: box-shadow .15s, transform .15s, border-color .15s;
+}
+.recurso:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+  border-color: var(--c-accent-blue);
+}
+.recurso::after { content: "→"; color: var(--c-accent-blue); font-weight: 700; }
+
+/* --------------------------------------- Página de bloque BLOQUEADA */
+/* El contenido queda difuminado y sin interacción… */
+.bloque-locked .bloque-locked__content {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+/* …y un velo a página completa muestra el candado. */
+.bloque-locked__veil {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  background: rgba(0, 19, 63, .42);
+  color: #fff;
+  text-align: center;
+  padding: var(--sp-6);
+}
+.bloque-locked__veil .lock__icon { width: 92px; height: 92px; filter: drop-shadow(0 8px 22px rgba(0, 19, 63, .5)); }
+.bloque-locked__veil .lock__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+}
+.bloque-locked__veil .lock__hint { margin: 0; color: rgba(255, 255, 255, .75); font-size: .95rem; }
+
+/* ------------------------------------------------------------- Footer */
+.bloque-footer {
+  padding: var(--sp-6) 0;
+  color: var(--c-ink-soft);
+  font-size: .9rem;
+  text-align: center;
+}

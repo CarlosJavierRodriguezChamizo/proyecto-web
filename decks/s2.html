@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De la arquitectura al prototipo — Presencia Digital · ESIC</title>
+</head>
+<body class="deck">
+
+  <!-- Logo persistente: azul sobre slides claras, blanco sobre oscuras (swap en deck.js) -->
+  <img class="deck-logo deck-logo--blue" src="/assets/logo_ESIC_azul.svg" alt="ESIC" />
+  <img class="deck-logo deck-logo--white" src="/assets/logo_ESIC_blanco.svg" alt="ESIC" />
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══════════════════ PORTADA ══════════════════ -->
+      <section class="slide--cover" data-background-color="#00133f">
+        <span class="kicker">Presencia Digital: Proyecto Web</span>
+        <h1>De la arquitectura<br>al prototipo</h1>
+        <p class="muted">TE2 · Usability, UX &amp; Analytics — el hilo BBVA / Gen Z continúa.</p>
+        <aside class="notes">Bienvenida. Hoy: arquitectura web, mobile-first, responsive, rendimiento, proceso de diseño, Figma, persuasión y el ejercicio de wireframe. 3 horas con descanso.</aside>
+      </section>
+
+      <!-- ══════════════════ 0 · CONTINUIDAD ══════════════════ -->
+      <section>
+        <section>
+          <span class="kicker">Recordamos dónde lo dejamos</span>
+          <p class="statement">Bloque 1: <span class="hl">diseñar antes de construir</span> — qué es UX/UI y por qué Figma.</p>
+          <p class="foot-hint">Hoy: de la arquitectura de un sitio al prototipo navegable.</p>
+          <aside class="notes">Una línea y seguimos: no re-explicar Bloque 1. Preguntar rápido si alguien no estuvo.</aside>
+        </section>
+        <section>
+          <span class="kicker">Hoy</span>
+          <h2>El mapa de la sesión</h2>
+          <ul class="checks" style="columns:2; column-gap:2em">
+            <li>La evolución del UX 🖥️</li>
+            <li>El reto BBVA y los entregables</li>
+            <li>Arquitectura web y SEO</li>
+            <li>Mobile-first, con datos</li>
+            <li>Responsive vs. Adaptive</li>
+            <li>Rendimiento desde el diseño</li>
+            <li>Sketch → Wireframe → Mockup → Prototipo</li>
+            <li>Introducción a Figma</li>
+            <li>Caso FIFA 🖥️</li>
+            <li>Persuasión: Cialdini</li>
+            <li><strong>Ejercicio: wireframe en Figma</strong></li>
+            <li>Puesta en común y cierre</li>
+          </ul>
+          <aside class="notes">Los puntos con 🖥️ se muestran fuera del deck. El ejercicio es el corazón de la sesión: dejar mínimo 1 h.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 1 · TIMELINE UX (EN DIRECTO) ══════════════════ -->
+      <section class="slide--live" data-background-color="#00133f">
+        <span class="live-chip">Se muestra en directo</span>
+        <h2>1 · La evolución del UX</h2>
+        <p>🖥️ Material aparte (línea temporal). Volvemos al deck en unos minutos.</p>
+        <aside class="notes">Abrir la imagen/PDF de la timeline UX. No hay contenido en el deck a propósito: contarlo en vivo.</aside>
+      </section>
+
+      <!-- ══════════════════ 2 · EL RETO BBVA ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">02</span>
+          <span class="kicker">Sección 2</span>
+          <h2>El reto BBVA<br>y los entregables</h2>
+          <aside class="notes">Contexto del concurso. Fuente: briefing BBVA + manual de trabajo grupal ESIC.</aside>
+        </section>
+        <section>
+          <span class="kicker">El reto</span>
+          <div class="bbva">
+            <p style="font-size:.9em"><strong>BBVA</strong> quiere posicionarse como marca de referencia para la
+            <strong>Gen Z (18-24 años)</strong>. Lanza un <strong>concurso de ideas</strong> para elegir la propuesta
+            creativa que sustente el nuevo desarrollo de negocio.</p>
+          </div>
+          <p class="foot-hint">Vosotros os presentáis a ese concurso.</p>
+          <aside class="notes">Leerlo tal cual del briefing. Es un encargo realista de agencia.</aside>
+        </section>
+        <section>
+          <span class="kicker">Por qué este segmento</span>
+          <div class="statrow">
+            <div class="stat"><span class="big">+65M</span><span class="lab">jóvenes 18-29 en los mercados BBVA</span></div>
+            <div class="stat"><span class="big">90%</span><span class="lab">ya bancarizados</span></div>
+          </div>
+          <p class="statement" style="font-size:1.1em; margin-top:.6em">La oportunidad no es bancarizar:<br>es <span class="hl">ganar vinculación</span> y ser el banco principal.</p>
+          <p class="src">Fuente: briefing BBVA (dossier del concurso).</p>
+          <aside class="notes">Dato de contexto, sin repetir el detalle del Bloque 1. La batalla es ser el banco PRINCIPAL, no el primero.</aside>
+        </section>
+        <section>
+          <span class="kicker">Tu rol</span>
+          <p class="statement">Actuáis como <span class="hl">agencia de branding-boutique digital</span> presentándose al concurso de BBVA.</p>
+          <aside class="notes">Rol de agencia: defenderéis decisiones ante "cliente" (profesores). Pensad en portfolio.</aside>
+        </section>
+        <section>
+          <span class="kicker">Los 4 entregables del concurso</span>
+          <h2>Qué espera BBVA</h2>
+          <div class="cards cards--2">
+            <div class="ccard"><span class="n">01</span><h3>Nueva marca digital global</h3><p>Naming y concepto de la nueva marca para Gen Z.</p></div>
+            <div class="ccard"><span class="n">02</span><h3>Identidad digital (Brand Book)</h3><p>Sistema visual completo de la marca.</p></div>
+            <div class="ccard"><span class="n">03</span><h3>Página web (HOME) en WordPress</h3><p>La landing construida y publicada.</p></div>
+            <div class="ccard"><span class="n">04</span><h3>Propuesta de valor Gen Z</h3><p>Cómo se plasma en producto, contenido y canales.</p></div>
+          </div>
+          <aside class="notes">Los mismos 4 del briefing, sin reformular. Hoy trabajamos lo que sostiene al nº 3.</aside>
+        </section>
+        <section>
+          <span class="kicker">El mapa de asignaturas</span>
+          <h2>Cómo se reparte el trabajo</h2>
+          <table class="tbl">
+            <tr><th>Asignatura</th><th>Entregable clave</th></tr>
+            <tr><td>TE1 · Creatividad Digital</td><td>Buyer persona, moodboard, naming, brand book, piezas creativas (App, Smart TV, Smart Watch, IG, TikTok, interfaz conversacional)</td></tr>
+            <tr class="hoy"><td>TE2 · Usability, UX &amp; Analytics</td><td>Requisitos del sitio, árbol de contenidos, wireframes (mín. 5 pantallas), plan de medición/KPIs</td></tr>
+            <tr><td>TE3 · Proyecto Digital</td><td>Landing en WordPress con toda la propuesta</td></tr>
+          </table>
+          <aside class="notes">La fila destacada es donde estamos hoy. TE1 ya lo han trabajado; TE3 viene después.</aside>
+        </section>
+        <section>
+          <span class="kicker">Dónde estamos hoy</span>
+          <h2>Sois el puente</h2>
+          <div class="proceso">
+            <div class="etapa"><h3>TE1 · Creatividad</h3><p>Marca y piezas — ya trabajado.</p><span class="who">✓ Hecho</span></div>
+            <div class="arrow">→</div>
+            <div class="etapa hoy"><h3>TE2 · UX &amp; Analytics</h3><p>Arquitectura, wireframes, Figma.</p><span class="who">Hoy</span></div>
+            <div class="arrow">→</div>
+            <div class="etapa"><h3>TE3 · Proyecto Digital</h3><p>Construcción real en WordPress.</p><span class="who">Después</span></div>
+          </div>
+          <p class="foot-hint">Lo que decidáis hoy en estructura condiciona lo que se puede construir después.</p>
+          <aside class="notes">Idea clave: el wireframe de hoy no es un ejercicio suelto — es el plano de la landing de TE3.</aside>
+        </section>
+        <section>
+          <span class="kicker">Evaluación · recordatorio</span>
+          <div class="statrow">
+            <div class="stat"><span class="big">40%</span><span class="lab">entregable</span></div>
+            <div class="stat"><span class="big">20%</span><span class="lab">presentación individual</span></div>
+            <div class="stat"><span class="big">20%</span><span class="lab">evaluación entre pares</span></div>
+          </div>
+          <p class="foot-hint">Mínimo 6.000 palabras · 3 bloques (uno por tema). Rúbrica completa en el manual.</p>
+          <aside class="notes">Un slide y seguimos — no detallar rúbrica. Remitir al manual para dudas.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 3 · ARQUITECTURA WEB Y SEO ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">03</span>
+          <span class="kicker">Sección 3</span>
+          <h2>Arquitectura web<br>y su correlación con SEO</h2>
+          <aside class="notes">Del "qué contamos" (TE1) al "dónde vive cada cosa". Es la parte más técnica de la mañana.</aside>
+        </section>
+        <section>
+          <span class="kicker">Definición</span>
+          <p class="statement" style="font-size:1.15em">La organización <span class="hl">jerárquica</span> de las páginas de un sitio y de los enlaces entre ellas: qué existe, dónde vive y cómo se llega hasta ahí.</p>
+          <div class="cards">
+            <div class="ccard"><span class="n">01</span><h3>Jerarquía</h3><p>El sitemap: qué páginas existen y de cuál cuelgan.</p></div>
+            <div class="ccard"><span class="n">02</span><h3>Navegación</h3><p>Menús y breadcrumbs: cómo se mueve el usuario.</p></div>
+            <div class="ccard"><span class="n">03</span><h3>Enlazado interno</h3><p>Los links entre páginas que conectan el contenido.</p></div>
+          </div>
+          <aside class="notes">Los 3 elementos siempre van juntos: un buen sitemap con mala navegación sigue siendo mala arquitectura.</aside>
+        </section>
+        <section>
+          <span class="kicker">Dos formas de organizar</span>
+          <h2>Plana vs. profunda</h2>
+          <svg class="diagram" viewBox="0 0 920 300" role="img" aria-label="Comparativa: arquitectura plana con pocos niveles frente a arquitectura profunda con muchos niveles.">
+            <!-- Plana -->
+            <text x="215" y="24" text-anchor="middle" font-size="17" font-weight="700" fill="var(--c-ink)">PLANA</text>
+            <rect x="175" y="40" width="80" height="34" rx="8" fill="var(--c-accent-blue)"/>
+            <text x="215" y="62" text-anchor="middle" font-size="13" fill="#fff">Home</text>
+            <g fill="#e8ecf7" stroke="var(--c-line)">
+              <rect x="15" y="130" width="70" height="30" rx="7"/><rect x="95" y="130" width="70" height="30" rx="7"/>
+              <rect x="175" y="130" width="70" height="30" rx="7"/><rect x="255" y="130" width="70" height="30" rx="7"/>
+              <rect x="335" y="130" width="70" height="30" rx="7"/>
+            </g>
+            <g stroke="var(--c-ink-soft)" stroke-width="1.5">
+              <line x1="215" y1="74" x2="50" y2="130"/><line x1="215" y1="74" x2="130" y2="130"/>
+              <line x1="215" y1="74" x2="215" y2="130"/><line x1="215" y1="74" x2="290" y2="130"/>
+              <line x1="215" y1="74" x2="370" y2="130"/>
+            </g>
+            <text x="215" y="205" text-anchor="middle" font-size="14" fill="var(--c-ink-soft)">Todo a 1-2 clics…</text>
+            <text x="215" y="226" text-anchor="middle" font-size="14" fill="#c01d1d">…pero el menú se satura al crecer</text>
+            <!-- Separador -->
+            <line x1="460" y1="20" x2="460" y2="280" stroke="var(--c-line)" stroke-width="1.5" stroke-dasharray="6 6"/>
+            <!-- Profunda -->
+            <text x="700" y="24" text-anchor="middle" font-size="17" font-weight="700" fill="var(--c-ink)">PROFUNDA</text>
+            <rect x="660" y="40" width="80" height="32" rx="8" fill="var(--c-accent-blue)"/>
+            <text x="700" y="61" text-anchor="middle" font-size="13" fill="#fff">Home</text>
+            <g fill="#e8ecf7" stroke="var(--c-line)">
+              <rect x="580" y="100" width="70" height="28" rx="7"/><rect x="750" y="100" width="70" height="28" rx="7"/>
+              <rect x="580" y="156" width="70" height="28" rx="7"/><rect x="750" y="156" width="70" height="28" rx="7"/>
+              <rect x="580" y="212" width="70" height="28" rx="7"/><rect x="750" y="212" width="70" height="28" rx="7"/>
+            </g>
+            <g stroke="var(--c-ink-soft)" stroke-width="1.5">
+              <line x1="700" y1="72" x2="615" y2="100"/><line x1="700" y1="72" x2="785" y2="100"/>
+              <line x1="615" y1="128" x2="615" y2="156"/><line x1="785" y1="128" x2="785" y2="156"/>
+              <line x1="615" y1="184" x2="615" y2="212"/><line x1="785" y1="184" x2="785" y2="212"/>
+            </g>
+            <text x="700" y="272" text-anchor="middle" font-size="14" fill="#c01d1d">Ordenada, pero el contenido se entierra</text>
+          </svg>
+          <p class="d-cap">Regla práctica: <strong>ninguna página a más de 3-4 clics de la home</strong>.</p>
+          <aside class="notes">No hay ganadora absoluta: el equilibrio. La regla de los 3-4 clics es el criterio operativo para el ejercicio.</aside>
+        </section>
+        <section>
+          <span class="kicker">El patrón profesional</span>
+          <h2>Silo / hub-and-spoke</h2>
+          <svg class="diagram" viewBox="0 0 640 300" role="img" aria-label="Una página pilar central conectada en ambos sentidos con seis contenidos específicos que también se enlazan entre sí.">
+            <g stroke="var(--c-accent-blue)" stroke-width="1.8">
+              <line x1="320" y1="150" x2="320" y2="52"/><line x1="320" y1="150" x2="475" y2="88"/>
+              <line x1="320" y1="150" x2="475" y2="216"/><line x1="320" y1="150" x2="320" y2="252"/>
+              <line x1="320" y1="150" x2="165" y2="216"/><line x1="320" y1="150" x2="165" y2="88"/>
+            </g>
+            <g stroke="var(--c-accent)" stroke-width="1.5" stroke-dasharray="5 5" fill="none">
+              <path d="M320 40 Q 420 30 475 76"/>
+              <path d="M487 100 Q 520 150 487 204"/>
+              <path d="M165 100 Q 132 150 165 204"/>
+            </g>
+            <circle cx="320" cy="150" r="52" fill="var(--c-accent-blue)"/>
+            <text x="320" y="146" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Página</text>
+            <text x="320" y="164" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">pilar</text>
+            <g fill="#e8ecf7" stroke="var(--c-accent-blue)" stroke-width="1.5">
+              <circle cx="320" cy="40" r="24"/><circle cx="475" cy="82" r="24"/><circle cx="475" cy="222" r="24"/>
+              <circle cx="320" cy="260" r="24"/><circle cx="165" cy="222" r="24"/><circle cx="165" cy="82" r="24"/>
+            </g>
+            <g text-anchor="middle" font-size="11" fill="var(--c-ink)">
+              <text x="320" y="44">tema 1</text><text x="475" y="86">tema 2</text><text x="475" y="226">tema 3</text>
+              <text x="320" y="264">tema 4</text><text x="165" y="226">tema 5</text><text x="165" y="86">tema 6</text>
+            </g>
+          </svg>
+          <p class="d-cap">El hub enlaza a los contenidos específicos; estos se enlazan entre sí <strong>y de vuelta al hub</strong>. Es el patrón habitual en proyectos reales de contenido SEO.</p>
+          <aside class="notes">Mencionar en abstracto que es lo que se usa en proyectos de posicionamiento por temáticas. Sin datos de cliente.</aside>
+        </section>
+        <section>
+          <span class="kicker">Por qué esto es SEO, no solo UX</span>
+          <h2>Cuatro razones</h2>
+          <div class="cards cards--2">
+            <div class="ccard"><span class="n">01</span><h3>Rastreabilidad</h3><p>Una arquitectura clara facilita que los bots descubran todas las páginas — el <strong>crawl budget</strong> no es infinito.</p></div>
+            <div class="ccard"><span class="n">02</span><h3>Indexabilidad</h3><p>URLs limpias, canonical claros, sitemap.xml y robots.txt coherentes con la jerarquía real.</p></div>
+            <div class="ccard"><span class="n">03</span><h3>Autoridad temática</h3><p>El enlazado interno reparte <strong>link equity</strong> desde las páginas fuertes hacia las que quieres posicionar.</p></div>
+            <div class="ccard"><span class="n">04</span><h3>Experiencia = señal</h3><p>Core Web Vitals, tiempo en página y rebote dependen de si el usuario encuentra rápido — y retroalimentan el ranking.</p></div>
+          </div>
+          <aside class="notes">La arquitectura es de las pocas decisiones que afecta a la vez a usuarios y a bots. Anticipa la sección de rendimiento.</aside>
+        </section>
+        <section>
+          <span class="kicker">Aplicado al caso</span>
+          <h2>Árbol mínimo para la landing Gen Z</h2>
+          <svg class="diagram" viewBox="0 0 920 240" role="img" aria-label="Árbol de contenidos: Home arriba y cinco secciones colgando de ella.">
+            <rect x="420" y="18" width="80" height="36" rx="9" fill="#072146"/>
+            <text x="460" y="41" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Home</text>
+            <g stroke="#1464f4" stroke-width="1.8">
+              <line x1="460" y1="54" x2="105" y2="130"/><line x1="460" y1="54" x2="285" y2="130"/>
+              <line x1="460" y1="54" x2="460" y2="130"/><line x1="460" y1="54" x2="635" y2="130"/>
+              <line x1="460" y1="54" x2="815" y2="130"/>
+            </g>
+            <g fill="#1464f4">
+              <rect x="30" y="130" width="150" height="52" rx="9"/>
+              <rect x="210" y="130" width="150" height="52" rx="9"/>
+              <rect x="385" y="130" width="150" height="52" rx="9"/>
+              <rect x="560" y="130" width="150" height="52" rx="9"/>
+              <rect x="740" y="130" width="150" height="52" rx="9"/>
+            </g>
+            <g text-anchor="middle" font-size="13.5" fill="#fff" font-weight="600">
+              <text x="105" y="161">Producto</text>
+              <text x="285" y="154">Cómo</text><text x="285" y="171">funciona</text>
+              <text x="460" y="154">Ventajas</text><text x="460" y="171">&amp; partners</text>
+              <text x="635" y="154">Sobre</text><text x="635" y="171">la marca</text>
+              <text x="815" y="154">Contacto /</text><text x="815" y="171">Hazte cliente</text>
+            </g>
+          </svg>
+          <p class="d-cap">Este árbol es el punto de partida del <strong>ejercicio TE2</strong> (árbol de contenidos + wireframes). Lo retomamos en la sección 11.</p>
+          <aside class="notes">Puente directo al ejercicio: guardad este esquema. Cada grupo lo adaptará a su propuesta de marca de TE1.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 4 · MOBILE-FIRST ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">04</span>
+          <span class="kicker">Sección 4</span>
+          <h2>Mobile-first,<br>validado con datos</h2>
+          <aside class="notes">Objetivo: que dejen de repetir "mobile-first" como mantra y sepan defenderlo con cifras y fuentes.</aside>
+        </section>
+        <section>
+          <p class="statement">«Todo el mundo diseña <span class="hl">mobile-first</span>.»<br>Sí — pero ¿por qué? ¿Con qué dato?</p>
+          <aside class="notes">Provocación inicial. Preguntar a la sala: ¿alguien sabe qué % del tráfico mundial es móvil?</aside>
+        </section>
+        <section>
+          <span class="kicker">El dato de tráfico</span>
+          <div class="statrow">
+            <div class="stat"><span class="big">52,27%</span><span class="lab">del tráfico web mundial es móvil (Q1 2026)</span></div>
+            <div class="stat"><span class="big" style="color:var(--c-ink-soft)">62,39%</span><span class="lab">un año antes — la cifra fluctúa</span></div>
+          </div>
+          <p class="foot-hint">Mayoritario, pero <strong>no un absoluto</strong>: varía muchísimo por país y por sector.</p>
+          <p class="src">Fuente: StatCounter, vía Statista — Q1 2026.</p>
+          <aside class="notes">Mostrar la caída interanual a propósito: el dato es una foto, no un dogma. Por sector: B2B desktop-heavy, medios/social mobile-heavy.</aside>
+        </section>
+        <section>
+          <span class="kicker">El matiz metodológico</span>
+          <h2>Por qué el número baila</h2>
+          <ul class="checks">
+            <li>Cada fuente <strong>filtra bots</strong> de forma distinta.</li>
+            <li>Medición por <strong>sesiones vs. por tiempo</strong> de uso: resultados diferentes.</li>
+            <li>Muestras y países cubiertos varían entre proveedores.</li>
+          </ul>
+          <p class="statement" style="font-size:1em; margin-top:.6em">Conclusión práctica: <span class="hl">cita siempre la fuente en pantalla</span> — nunca des el número como dogma.</p>
+          <aside class="notes">Hábito profesional: en vuestros entregables, cifra sin fuente = cifra que no existe.</aside>
+        </section>
+        <section>
+          <span class="kicker">El dato de comportamiento</span>
+          <p class="big" style="margin:0">96,2%</p>
+          <p class="statement" style="font-size:1em">de los usuarios de internet del mundo se conecta con el móvil <span class="hl">al menos alguna vez</span> — aunque no sea su única vía.</p>
+          <p class="foot-hint">Más contundente que el reparto puro de tráfico: casi nadie vive fuera del móvil.</p>
+          <p class="src">Fuente: DataReportal — informe Digital global.</p>
+          <aside class="notes">Este es el dato fuerte: penetración de uso. El tráfico se reparte; el usuario que NO usa móvil casi no existe.</aside>
+        </section>
+        <section>
+          <span class="kicker">La razón de negocio</span>
+          <p class="statement" style="font-size:1.15em">Google usa <span class="hl">indexación mobile-first</span>: evalúa principalmente la versión móvil de tu sitio para posicionar — exista o no versión desktop.</p>
+          <p class="foot-hint">Diseñar mobile-first ya no es una opción de UX: <strong>es un requisito de SEO</strong>.</p>
+          <p class="src">Fuente: Google Search Central — Mobile-first indexing.</p>
+          <aside class="notes">Cerrar el argumento: aunque tu sector fuera desktop-heavy, Google te mide por el móvil igualmente.</aside>
+        </section>
+        <section>
+          <span class="kicker">Aplicado al caso</span>
+          <div class="bbva">
+            <p style="font-size:.85em">El segmento <strong>18-24 es nativo móvil por definición</strong>. Cualquier propuesta de
+            valor que dependa de fricción en el móvil — formularios largos, checkout complejo —
+            <strong>pierde a este público antes de convertir</strong>.</p>
+          </div>
+          <p class="foot-hint">En el ejercicio: el primer frame que abriréis en Figma es el de móvil.</p>
+          <aside class="notes">Conectar con Gen Z: no es que "también" usen móvil — es que el móvil ES el canal. Anticipar la regla del ejercicio.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 5 · RESPONSIVE VS ADAPTIVE ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">05</span>
+          <span class="kicker">Sección 5</span>
+          <h2>Responsive<br>vs. Adaptive</h2>
+          <aside class="notes">Dos estrategias para el multi-dispositivo. Spoiler: casi siempre responsive, pero hay que saber por qué.</aside>
+        </section>
+        <section>
+          <span class="kicker">Responsive Design</span>
+          <div class="split">
+            <div>
+              <p style="font-size:.85em"><strong>Un único código base</strong> con layout fluido (grid/flexbox en %)
+              que se reorganiza de forma <strong>continua</strong> según el ancho de pantalla, mediante media queries.</p>
+              <p class="muted" style="font-size:.7em">Se adapta a cualquier tamaño — no solo a los previstos.</p>
+            </div>
+            <svg class="diagram" viewBox="0 0 380 200" role="img" aria-label="Tres pantallas de distinto ancho con el mismo contenido fluyendo.">
+              <g fill="none" stroke="var(--c-ink)" stroke-width="2">
+                <rect x="10" y="60" width="70" height="120" rx="8"/>
+                <rect x="110" y="40" width="110" height="140" rx="8"/>
+                <rect x="250" y="20" width="120" height="160" rx="8"/>
+              </g>
+              <g fill="var(--c-accent-blue)" opacity=".85">
+                <rect x="18" y="70" width="54" height="26" rx="4"/>
+                <rect x="118" y="50" width="94" height="30" rx="4"/>
+                <rect x="258" y="30" width="104" height="34" rx="4"/>
+              </g>
+              <g fill="#e8ecf7">
+                <rect x="18" y="104" width="54" height="12" rx="3"/><rect x="18" y="122" width="54" height="12" rx="3"/><rect x="18" y="140" width="54" height="12" rx="3"/>
+                <rect x="118" y="88" width="45" height="14" rx="3"/><rect x="167" y="88" width="45" height="14" rx="3"/><rect x="118" y="108" width="94" height="14" rx="3"/>
+                <rect x="258" y="72" width="32" height="16" rx="3"/><rect x="294" y="72" width="32" height="16" rx="3"/><rect x="330" y="72" width="32" height="16" rx="3"/>
+              </g>
+              <path d="M85 130 Q 97 120 108 118" stroke="var(--c-accent)" stroke-width="2" fill="none"/>
+              <path d="M225 108 Q 238 98 248 96" stroke="var(--c-accent)" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <aside class="notes">El mismo contenido "fluye": una columna en móvil, dos en tablet, tres en desktop. Un solo HTML/CSS.</aside>
+        </section>
+        <section>
+          <span class="kicker">Adaptive Design</span>
+          <div class="split">
+            <div>
+              <p style="font-size:.85em"><strong>Varios layouts fijos</strong> diseñados para anchos concretos
+              (320, 768, 1024, 1440&nbsp;px). El servidor o el cliente detecta el dispositivo y sirve
+              <strong>el layout más cercano</strong>.</p>
+              <p class="muted" style="font-size:.7em">No hay transición fluida entre estados: son saltos.</p>
+            </div>
+            <svg class="diagram" viewBox="0 0 380 200" role="img" aria-label="Escalera de cuatro layouts fijos a anchos concretos.">
+              <g fill="var(--c-accent-soft)" stroke="var(--c-accent-blue)" stroke-width="2">
+                <rect x="10" y="140" width="60" height="40" rx="6"/>
+                <rect x="90" y="105" width="85" height="75" rx="6"/>
+                <rect x="195" y="70" width="105" height="110" rx="6"/>
+                <rect x="320" y="35" width="50" height="145" rx="6"/>
+              </g>
+              <g text-anchor="middle" font-size="12" fill="var(--c-ink)">
+                <text x="40" y="164">320</text><text x="132" y="147">768</text>
+                <text x="247" y="130">1024</text><text x="345" y="112">1440</text>
+              </g>
+              <g stroke="#c01d1d" stroke-width="2"><line x1="72" y1="160" x2="88" y2="142"/><line x1="177" y1="142" x2="193" y2="125"/><line x1="302" y1="125" x2="318" y2="107"/></g>
+            </svg>
+          </div>
+          <aside class="notes">Las líneas rojas son los "saltos": entre 768 y 1024 no pasa nada — se sirve el layout más cercano.</aside>
+        </section>
+        <section>
+          <span class="kicker">Comparativa</span>
+          <table class="tbl">
+            <tr><th></th><th>Responsive</th><th>Adaptive</th></tr>
+            <tr><td>Código</td><td>Un único código base</td><td>Varios layouts por breakpoint</td></tr>
+            <tr><td>Adaptación</td><td>Fluida y continua</td><td>Por saltos, a puntos fijos</td></tr>
+            <tr><td>Mantenimiento</td><td>Más sencillo a largo plazo</td><td>Más control fino, más esfuerzo</td></tr>
+            <tr><td>Rendimiento</td><td>Puede cargar recursos de más</td><td>Puede optimizar mejor por dispositivo</td></tr>
+            <tr><td>Caso típico</td><td>Sitios de contenido, la mayoría de webs</td><td>Necesidades muy distintas por dispositivo (p. ej. checkout diferenciado)</td></tr>
+          </table>
+          <aside class="notes">Recorrer fila a fila. La de rendimiento es la única donde adaptive gana — por eso sobrevive en e-commerce complejo.</aside>
+        </section>
+        <section>
+          <span class="kicker">Y entonces, ¿cuál?</span>
+          <p class="statement" style="font-size:1.15em">Hoy, casi siempre <span class="hl">responsive</span>: menos coste de mantenimiento, cubre dispositivos nuevos sin rediseñar, y es lo que espera Google con mobile-first indexing.</p>
+          <div class="bbva" style="margin-top:.7em">
+            <p style="font-size:.75em">En el ejercicio: la landing de <strong>BBVA Gen Z</strong> se diseña responsive —
+            un único wireframe pensado para <strong>fluir de móvil a desktop</strong>, no layouts independientes.</p>
+          </div>
+          <aside class="notes">Decisión tomada para el ejercicio: responsive. Empezad por móvil y pensad cómo fluye hacia arriba.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 6 · RENDIMIENTO DESDE EL DISEÑO ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">06</span>
+          <span class="kicker">Sección 6</span>
+          <h2>El rendimiento<br>se trabaja desde el diseño</h2>
+          <aside class="notes">Cambio de mentalidad: el rendimiento no se "arregla" en desarrollo — se decide en diseño.</aside>
+        </section>
+        <section>
+          <p class="statement">Las decisiones de diseño determinan el <span class="hl">70-80% del rendimiento</span> antes de escribir una línea de código.</p>
+          <p class="foot-hint">El rendimiento no es "cosa de desarrollo" que se corrige al final.</p>
+          <aside class="notes">Idea central de la sección. Ejemplo rápido: un hero con vídeo 4K de fondo no lo salva ningún programador.</aside>
+        </section>
+        <section>
+          <span class="kicker">El lenguaje común diseño–desarrollo</span>
+          <h2>Core Web Vitals</h2>
+          <div class="cards">
+            <div class="ccard"><span class="n">LCP</span><h3>Largest Contentful Paint</h3><p>Qué tan rápido carga el elemento más grande visible.<br><strong>Decisión de diseño:</strong> tamaño y formato de la imagen/vídeo hero.</p></div>
+            <div class="ccard"><span class="n">INP</span><h3>Interaction to Next Paint</h3><p>Qué tan rápido responde la interfaz al interactuar.<br><strong>Decisión de diseño:</strong> cuántos elementos animados/interactivos hay sobre el pliegue.</p></div>
+            <div class="ccard"><span class="n">CLS</span><h3>Cumulative Layout Shift</h3><p>Cuánto "salta" el layout mientras carga.<br><strong>Decisión de diseño:</strong> reservar espacio a imágenes, banners y fuentes antes de que carguen.</p></div>
+          </div>
+          <aside class="notes">Tres métricas de Google, tres decisiones que se toman en Figma, no en el editor de código.</aside>
+        </section>
+        <section>
+          <span class="kicker">Decisiones de diseño que pesan</span>
+          <ul class="checks">
+            <li><strong>Nº de fuentes web</strong> y sus pesos — cada familia + variante es una petición más.</li>
+            <li><strong>El hero</strong>: WebP/AVIF vs. JPEG pesado; dimensiones reales vs. escaladas por CSS.</li>
+            <li><strong>Autoplay de vídeo de fondo</strong> — frecuente en heroes "bonitos", carísimo en móvil.</li>
+            <li><strong>Embeds de terceros</strong> (mapas, redes, chat, tracking) — JS ajeno que no controlas.</li>
+            <li><strong>Above the fold</strong>: cuánto hay que cargar antes de que el usuario vea algo útil.</li>
+          </ul>
+          <aside class="notes">Pedir ejemplos: ¿qué web conocéis que tarde en cargar? Casi siempre es una de estas cinco causas.</aside>
+        </section>
+        <section>
+          <span class="kicker">La herramienta mental</span>
+          <h2>Presupuesto de rendimiento</h2>
+          <p class="statement" style="font-size:1em">Fijar el límite <span class="hl">antes de diseñar</span>, no como corrección posterior.</p>
+          <div class="cards cards--2" style="max-width:24em; margin-inline:auto">
+            <div class="ccard"><h3>&lt; 200 KB</h3><p>de imágenes en el hero</p></div>
+            <div class="ccard"><h3>Máx. 2</h3><p>fuentes web distintas</p></div>
+          </div>
+          <p class="foot-hint">En el ejercicio: pensad ya qué "pesa" en vuestro wireframe (imágenes, vídeo, mapas, chat) y priorizad lo esencial en la primera pantalla.</p>
+          <aside class="notes">Cifras de ejemplo, no dogma — el valor está en fijarlas ANTES. Puente al ejercicio: cada bloque del wireframe tiene un coste.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 7 · PROCESO DE TRABAJO ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">07</span>
+          <span class="kicker">Sección 7</span>
+          <h2>Sketch → Wireframe<br>→ Mockup → Prototipo</h2>
+          <aside class="notes">El proceso completo de diseño. Hoy construimos la segunda etapa.</aside>
+        </section>
+        <section>
+          <span class="kicker">El proceso completo</span>
+          <h2>Fidelidad creciente</h2>
+          <div class="proceso">
+            <div class="etapa"><span class="fid" style="width:25%"></span><h3>Sketch</h3><p>Explorar ideas rápido.</p><span class="who">Valida: equipo</span></div>
+            <div class="arrow">→</div>
+            <div class="etapa hoy"><span class="fid" style="width:50%"></span><h3>Wireframe</h3><p>Estructura sin estética.</p><span class="who">Valida: equipo + cliente</span></div>
+            <div class="arrow">→</div>
+            <div class="etapa"><span class="fid" style="width:75%"></span><h3>Mockup</h3><p>Diseño visual final.</p><span class="who">Valida: marca</span></div>
+            <div class="arrow">→</div>
+            <div class="etapa"><span class="fid" style="width:100%"></span><h3>Prototipo</h3><p>Navegación simulada.</p><span class="who">Valida: usuarios</span></div>
+          </div>
+          <p class="d-cap">Cada etapa sube la fidelidad — y cambia <strong>quién valida</strong>.</p>
+          <aside class="notes">Diagrama-mapa de las próximas 4 slides. El recuadro azul es lo de hoy.</aside>
+        </section>
+        <section>
+          <span class="kicker">Etapa 1</span>
+          <h2>Sketch</h2>
+          <p style="font-size:.85em">Boceto a mano o digital <strong>muy rápido</strong>, sin cuidar estética, para explorar
+          muchas ideas de estructura en poco tiempo.</p>
+          <ul class="checks">
+            <li>Se valida <strong>con el propio equipo</strong>.</li>
+            <li>Herramienta: papel, pizarra, o Figma en modo muy libre.</li>
+          </ul>
+          <aside class="notes">Insistir: la fealdad es una feature — un sketch bonito invita a discutir estética demasiado pronto.</aside>
+        </section>
+        <section>
+          <span class="kicker">Etapa 2 · La de hoy</span>
+          <h2>Wireframe</h2>
+          <p style="font-size:.85em">Estructura en <strong>blanco y negro</strong> (o grises), sin contenido final ni estilo visual —
+          define <strong>jerarquía de la información</strong>, ubicación de bloques y funcionalidades
+          (formularios, CTAs, menús).</p>
+          <ul class="checks">
+            <li>Se valida con equipo y cliente <strong>en cuanto a estructura, no estética</strong>.</li>
+            <li><strong>Es lo que construiréis en el ejercicio de hoy.</strong></li>
+          </ul>
+          <aside class="notes">La etapa protagonista. Si el cliente dice "no me gusta el gris", explicarle que ES gris a propósito.</aside>
+        </section>
+        <section>
+          <span class="kicker">Etapa 3</span>
+          <h2>Mockup</h2>
+          <p style="font-size:.85em">Aplicación del <strong>diseño visual final</strong> — color, tipografía, imágenes definitivas —
+          sobre la estructura del wireframe. <strong>Estático</strong>, no interactivo.</p>
+          <ul class="checks">
+            <li>Se valida <strong>estética y de marca</strong>.</li>
+          </ul>
+          <aside class="notes">Aquí entraría el brand book de TE1: la marca que crearon viste la estructura de hoy.</aside>
+        </section>
+        <section>
+          <span class="kicker">Etapa 4</span>
+          <h2>Prototipo</h2>
+          <p style="font-size:.85em">El mockup <strong>conectado con interacciones</strong> — clics, transiciones, estados —
+          simulando la navegación real <strong>sin programar nada</strong>. Permite testear con usuarios antes de construir.</p>
+          <ul class="checks">
+            <li>Herramienta: Figma en modo prototipo.</li>
+          </ul>
+          <aside class="notes">El puente hacia TE3: lo que se valida en prototipo se construye en WordPress con confianza.</aside>
+        </section>
+        <section>
+          <span class="kicker">Por qué el orden importa</span>
+          <p class="statement" style="font-size:1.1em">Cada etapa resuelve <span class="hl">un tipo de duda distinto</span>. Invertir en mockup antes de validar el wireframe = rehacer diseño visual sobre una estructura que puede cambiar.</p>
+          <aside class="notes">Anécdota útil: el error nº 1 de los grupos cada año es saltar al color antes de validar estructura.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 8 · INTRODUCCIÓN A FIGMA ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">08</span>
+          <span class="kicker">Sección 8</span>
+          <h2>Introducción<br>a Figma</h2>
+          <aside class="notes">Ya lo vieron por encima en el Bloque 1; hoy, los conceptos que necesitan para el ejercicio.</aside>
+        </section>
+        <section>
+          <span class="kicker">Qué es y por qué es el estándar</span>
+          <p class="statement" style="font-size:1.05em">Diseño de interfaz <span class="hl">colaborativo, en el navegador</span>, con edición en tiempo real multi-usuario.</p>
+          <p class="foot-hint">A diferencia de Sketch/Adobe XD: sin exportar ni sincronizar archivos — todos trabajan sobre el mismo documento vivo.</p>
+          <aside class="notes">El "Google Docs del diseño". La colaboración en vivo es lo que mató a la competencia.</aside>
+        </section>
+        <section>
+          <span class="kicker">Conceptos clave de la interfaz</span>
+          <div class="cards">
+            <div class="ccard"><span class="n">01</span><h3>Frames</h3><p>Los "lienzos" que representan pantallas o tamaños de dispositivo.</p></div>
+            <div class="ccard"><span class="n">02</span><h3>Componentes y variantes</h3><p>Elementos reutilizables (botones, inputs, cards) que se actualizan globalmente al cambiar el original — la base de un Design System.</p></div>
+            <div class="ccard"><span class="n">03</span><h3>Auto Layout</h3><p>Layout tipo flexbox dentro de Figma: el componente se adapta al contenido y simula comportamiento responsive.</p></div>
+            <div class="ccard"><span class="n">04</span><h3>Modo Prototipo</h3><p>Conectar frames con interacciones (clic → navega, hover → cambia estado) para simular la navegación real.</p></div>
+            <div class="ccard"><span class="n">05</span><h3>Dev Mode</h3><p>Vista para desarrollo: medidas, espaciados, colores y código CSS/iOS/Android generado desde el diseño.</p></div>
+          </div>
+          <aside class="notes">Componentes enlaza con el caso FIFA (design system) que viene justo después. Auto Layout conecta con responsive.</aside>
+        </section>
+        <section>
+          <span class="kicker">Por qué Figma para el ejercicio de hoy</span>
+          <ul class="checks" style="max-width:22em; margin-inline:auto">
+            <li>Todos editáis <strong>el mismo archivo</strong> de wireframe a la vez.</li>
+            <li>Se <strong>comenta directamente</strong> sobre el diseño.</li>
+            <li>De wireframe a prototipo <strong>sin cambiar de herramienta</strong>.</li>
+          </ul>
+          <aside class="notes">Logística: un archivo por grupo, todos dentro. Comprobar que todos tienen cuenta antes del ejercicio.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 9 · CASO FIFA (EN DIRECTO) ══════════════════ -->
+      <section class="slide--live" data-background-color="#00133f">
+        <span class="live-chip">Se muestra en directo</span>
+        <h2>9 · Caso FIFA</h2>
+        <p>🖥️ Se muestra en Figma / web. Volvemos al deck para Cialdini.</p>
+        <aside class="notes">Abrir el material del caso FIFA (design system / Figma). Conectarlo con "componentes y variantes" de la sección anterior.</aside>
+      </section>
+
+      <!-- ══════════════════ 10 · CIALDINI ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">10</span>
+          <span class="kicker">Sección 10</span>
+          <h2>Persuasión: los principios<br>de Cialdini en un sitio web</h2>
+          <aside class="notes">Robert Cialdini, "Influence" (1984): los 6 principios clásicos de la persuasión — aplicados a la web del caso.</aside>
+        </section>
+        <section>
+          <span class="kicker">El marco</span>
+          <p class="statement" style="font-size:1.05em">6 principios que explican por qué decimos <span class="hl">«sí»</span> — y que puedes diseñar deliberadamente en una interfaz.</p>
+          <div class="cards" style="font-size:.85em">
+            <div class="ccard"><h3>1 · Reciprocidad</h3></div>
+            <div class="ccard"><h3>2 · Compromiso y coherencia</h3></div>
+            <div class="ccard"><h3>3 · Prueba social</h3></div>
+            <div class="ccard"><h3>4 · Autoridad</h3></div>
+            <div class="ccard"><h3>5 · Simpatía</h3></div>
+            <div class="ccard"><h3>6 · Escasez</h3></div>
+          </div>
+          <aside class="notes">Uno por slide, siempre con ejemplo del caso BBVA Gen Z para mantener el hilo.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 1</span>
+          <h2>Reciprocidad</h2>
+          <p style="font-size:.85em">Dar algo de valor <strong>antes</strong> de pedir algo a cambio.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> contenido de educación financiera gratuita en formato micro (stories/reels) antes de pedir que se hagan cliente — literalmente parte de la propuesta de valor del briefing.</p></div>
+          <aside class="notes">El briefing ya incluye educación financiera: no es un ejemplo inventado, es SU proyecto.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 2</span>
+          <h2>Compromiso y coherencia</h2>
+          <p style="font-size:.85em">Un <strong>«sí» pequeño</strong> primero facilita el «sí» grande después.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> onboarding con un primer paso muy ligero — «descubre tu perfil financiero» en 30 segundos — antes de pedir la apertura de cuenta.</p></div>
+          <aside class="notes">Micro-compromisos: quien completa el test ya "ha empezado" con la marca.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 3</span>
+          <h2>Prueba social</h2>
+          <p style="font-size:.85em">Confiamos en lo que <strong>otros ya validaron</strong>.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> testimonios reales o datos de adopción visibles — «+18M de clientes digitales», cifras que aparecen en el propio dossier BBVA.</p></div>
+          <aside class="notes">Ojo: prueba social relevante para Gen Z = gente como ellos, no banca corporativa.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 4</span>
+          <h2>Autoridad</h2>
+          <p style="font-size:.85em">Confiamos más en quien <strong>demuestra expertise</strong>.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> sellos de seguridad y cifras de solidez del grupo (activos, presencia en +25 países) posicionados con criterio — sin saturar de datos corporativos poco relevantes para Gen Z.</p></div>
+          <aside class="notes">La autoridad en banca es higiénica: debe estar, pero no ser el mensaje central para este público.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 5</span>
+          <h2>Simpatía (liking)</h2>
+          <p style="font-size:.85em">Confiamos más en marcas y personas que percibimos <strong>afines</strong>.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> tono, identidad visual y casos de uso que se parecen a la vida del Gen Z — gaming, música, deporte, mencionados explícitamente como partners en el briefing.</p></div>
+          <aside class="notes">Conectar con el brand book de TE1: la simpatía se diseña — tono de voz + estética + contextos de uso.</aside>
+        </section>
+        <section>
+          <span class="kicker">Principio 6</span>
+          <h2>Escasez</h2>
+          <p style="font-size:.85em">Lo <strong>limitado</strong> en tiempo o disponibilidad genera acción.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>En la web BBVA Gen Z:</strong> ventajas por tiempo limitado e incentivos gamificados de la propuesta de valor — usados con cuidado, <strong>sin caer en dark patterns</strong>.</p></div>
+          <aside class="notes">Anticipar el cierre ético: escasez real sí, falsa urgencia no.</aside>
+        </section>
+        <section>
+          <span class="kicker">Bonus</span>
+          <h2>Unidad — el 7º principio</h2>
+          <p style="font-size:.85em">Añadido por Cialdini años después: <strong>pertenencia a un grupo</strong>, identidad compartida.</p>
+          <div class="bbva"><p style="font-size:.72em"><strong>Especialmente potente para Gen Z:</strong> comunidad, pertenencia a un «club» de la marca — no ser cliente, ser miembro.</p></div>
+          <aside class="notes">De "Pre-Suasión". Para Gen Z probablemente el más potente de los 7: piensa en comunidades de Discord, drops, membresías.</aside>
+        </section>
+        <section>
+          <span class="kicker">Cierre de la sección</span>
+          <p class="statement" style="font-size:1.05em">Persuasión, <span class="hl">no manipulación</span>.<br>La línea la marca la transparencia.</p>
+          <p class="foot-hint">Ejemplo: escasez real (una promo que de verdad termina) vs. falsa urgencia (el contador que se reinicia). Lo segundo es un dark pattern — y la Gen Z los detecta.</p>
+          <aside class="notes">Advertencia ética breve pero explícita. En el ejercicio se les pedirá aplicar UN principio de forma consciente.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 11 · EJERCICIO PRÁCTICO ══════════════════ -->
+      <section>
+        <section class="slide--blue" data-background-color="#0047e9">
+          <span class="sec-num">11</span>
+          <span class="kicker">Sección 11 · Manos a la obra</span>
+          <h2>Ejercicio: construcción<br>de un wireframe en Figma</h2>
+          <p class="muted" style="font-size:.7em">Encaja directamente con el entregable TE2 del manual.</p>
+          <aside class="notes">El corazón de la sesión. Comprobar cuentas de Figma y grupos antes de arrancar el reloj.</aside>
+        </section>
+        <section>
+          <span class="kicker">Instrucciones</span>
+          <ul class="checks">
+            <li>Grupos <strong>ya formados</strong> (Coordinación Operativa / Canvas).</li>
+            <li>Partid del <strong>árbol de contenidos</strong> visto en la sección 3.</li>
+            <li>Construid en Figma <strong>al menos las 5 pantallas mínimas</strong> del manual: inicio, servicios, sobre nosotros, casos de éxito, contacto.</li>
+            <li>Cada pantalla: <strong>jerarquía clara</strong>, <strong>CTA principal visible</strong>, y al menos una <strong>funcionalidad del buyer persona</strong> (formulario, chat, simulador…).</li>
+            <li><strong>Mobile-first</strong>: empezad por el frame de móvil, no por desktop.</li>
+          </ul>
+          <aside class="notes">Las 5 pantallas son el mínimo del manual, no el objetivo. La funcionalidad del buyer persona conecta con su TE1.</aside>
+        </section>
+        <section>
+          <span class="kicker">Tiempo de trabajo</span>
+          <div class="timer">
+            <div class="timer__display" id="timer-display">45:00</div>
+            <div class="timer__btns" id="timer-btns">
+              <button data-min="30">30 min</button>
+              <button data-min="45" class="primary">45 min</button>
+              <button data-min="60">60 min</button>
+              <button data-action="toggle" id="timer-toggle">▶ Iniciar</button>
+            </div>
+          </div>
+          <h3 style="margin-top:.8em">Antes de la puesta en común, autoevaluad:</h3>
+          <ul class="checks" style="font-size:.85em">
+            <li>¿Hay <strong>jerarquía clara</strong> en cada pantalla?</li>
+            <li>¿El <strong>CTA principal se ve sin scroll</strong>?</li>
+            <li>¿Está pensado <strong>mobile-first</strong>?</li>
+            <li>¿Aplica algún principio de <strong>Cialdini</strong> de forma consciente?</li>
+          </ul>
+          <aside class="notes">Ajustar el temporizador según lo que quede de las 3 h. Avisar a mitad de tiempo y a 5 min del final.</aside>
+        </section>
+      </section>
+
+      <!-- ══════════════════ 12 · CONCLUSIONES Y CIERRE ══════════════════ -->
+      <section>
+        <section>
+          <span class="kicker">Resumen de la sesión</span>
+          <h2>De la arquitectura al wireframe</h2>
+          <div class="proceso" style="font-size:.85em">
+            <div class="etapa"><h3>Arquitectura</h3><p>Jerarquía + navegación + enlazado = también SEO.</p></div>
+            <div class="arrow">→</div>
+            <div class="etapa"><h3>Decisiones base</h3><p>Mobile-first (con datos) · responsive · presupuesto de rendimiento.</p></div>
+            <div class="arrow">→</div>
+            <div class="etapa"><h3>Proceso + Figma</h3><p>Sketch → wireframe → mockup → prototipo, en una sola herramienta.</p></div>
+            <div class="arrow">→</div>
+            <div class="etapa hoy"><h3>Vuestro wireframe</h3><p>5 pantallas, CTA visible, persuasión consciente.</p></div>
+          </div>
+          <aside class="notes">Un solo mapa: todo lo de hoy alimenta el recuadro final — su entregable TE2.</aside>
+        </section>
+        <section>
+          <span class="kicker">Puesta en común</span>
+          <p class="statement" style="font-size:1.1em">Cada grupo comparte pantalla y comenta <span class="hl">1 decisión de diseño</span> — y por qué la tomó.</p>
+          <p class="foot-hint">Rápido, sin presentación formal: 2-3 minutos por grupo.</p>
+          <aside class="notes">Moderar tiempos con firmeza. Preguntar siempre el "por qué", no el "qué".</aside>
+        </section>
+        <section class="slide--cover" data-background-color="#00133f">
+          <span class="kicker">Fin de la sesión de hoy</span>
+          <h2>Hoy: de la arquitectura<br>al prototipo</h2>
+          <p class="muted">Mañana seguimos con otro bloque del módulo.<br>Recordad: el wireframe de hoy es la base del entregable TE2.</p>
+          <aside class="notes">No adelantar contenido de mañana. Recordatorio práctico: subir el archivo Figma compartido antes de salir + fecha de entrega si aplica.</aside>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/s2.js"></script>
+</body>
+</html>

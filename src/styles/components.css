@@ -1,0 +1,173 @@
+/* =========================================================================
+   components.css — Estilos de los componentes reutilizables.
+   Asume que tokens.css/base.css ya están cargados.
+   ========================================================================= */
+
+/* --------------------------------------------------------------- Header */
+.site-header {
+  width: 100%;
+  border-bottom: 1px solid var(--c-line);
+  background: var(--c-bg);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  min-height: 64px;
+  padding-block: var(--sp-3);
+}
+.site-header__brand { display: flex; align-items: center; gap: var(--sp-3); }
+/* Logo como background-image: Vite reescribe la URL relativa (offline en
+   cualquier ruta). background-size:contain encaja el SVG. */
+.site-header__logo {
+  display: block; height: 40px; width: 116px;
+  background-repeat: no-repeat; background-position: left center; background-size: contain;
+}
+.site-header__logo--blue { background-image: url("/assets/logo_ESIC_azul.svg"); }
+.site-header__logo--white { background-image: url("/assets/logo_ESIC_blanco.svg"); }
+.site-header__nav { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: center; }
+.site-header__nav a {
+  text-decoration: none;
+  color: var(--c-ink);
+  font-weight: 600;
+  font-size: .98rem;
+}
+.site-header__nav a:hover { color: var(--c-accent-blue); }
+
+/* Variante sobre azul */
+.site-header--blue {
+  background: var(--c-bg-blue);
+  border-bottom-color: var(--c-line-blue);
+}
+.site-header--blue .site-header__nav a { color: #fff; }
+.site-header--blue .site-header__nav a:hover { color: var(--c-accent); }
+
+/* Migas de pan */
+.breadcrumb { font-size: .9rem; }
+.breadcrumb ol {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center;
+}
+.breadcrumb li { display: flex; align-items: center; gap: var(--sp-2); color: var(--c-ink-soft); }
+.breadcrumb li + li::before { content: "/"; color: var(--c-line); }
+.breadcrumb a { color: var(--c-ink-soft); text-decoration: none; }
+.breadcrumb a:hover { color: var(--c-accent-blue); }
+.breadcrumb [aria-current="page"] { color: var(--c-ink); font-weight: 600; }
+.site-header--blue .breadcrumb a,
+.site-header--blue .breadcrumb li { color: var(--c-white-soft); }
+.site-header--blue .breadcrumb [aria-current="page"] { color: #fff; }
+
+/* ----------------------------------------------------------------- Card */
+.card {
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--sp-5);
+}
+.card__title { margin: 0 0 var(--sp-2); }
+.card__body { color: var(--c-body); }
+.card--link { display: block; text-decoration: none; color: inherit; transition: box-shadow .15s, transform .15s; }
+.card--link:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+/* Filo de acento como detalle gráfico (no texto) */
+.card--accent { border-top: 4px solid var(--c-accent); }
+
+/* Sobre azul: tarjeta translúcida con texto blanco */
+.section--blue .card,
+.section--ink .card {
+  background: rgba(255, 255, 255, .08);
+  border-color: var(--c-line-blue);
+  color: #fff;
+  box-shadow: none;
+}
+.section--blue .card__body,
+.section--ink .card__body { color: var(--c-white-soft); }
+
+/* ----------------------------------------------------------------- Chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: .3em .8em;
+  border-radius: var(--radius-pill);
+  background: var(--c-accent-soft);   /* tinte del principal SOLO como fondo */
+  color: var(--c-ink);
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.chip--outline { background: transparent; border: 1px solid var(--c-line); color: var(--c-ink); }
+.section--blue .chip,
+.section--ink .chip {
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------ KPI */
+.kpi { display: flex; flex-direction: column; gap: var(--sp-1); }
+.kpi__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: .95;
+  color: var(--c-accent-blue);
+  letter-spacing: .01em;
+}
+.kpi__label { color: var(--c-ink-soft); font-size: .95rem; max-width: 22ch; }
+.section--blue .kpi__num,
+.section--ink .kpi__num { color: var(--c-accent); }
+.section--blue .kpi__label,
+.section--ink .kpi__label { color: var(--c-white-soft); }
+
+/* --------------------------------------------------------------- Botón */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: .7em 1.4em;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  font: 600 1rem/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s, transform .1s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.btn--primary { background: var(--c-accent-blue); color: #fff; border-color: var(--c-accent-blue); }
+.btn--primary:hover { background: #0036b3; border-color: #0036b3; }
+.btn--secondary { background: transparent; color: var(--c-accent-blue); border-color: var(--c-accent-blue); }
+.btn--secondary:hover { background: var(--c-accent-soft); }
+.btn--ghost { background: transparent; color: var(--c-accent-blue); border-color: transparent; }
+.btn--ghost:hover { background: var(--c-accent-soft); }
+
+/* Variantes sobre azul/tinta */
+.section--blue .btn--primary,
+.section--ink .btn--primary { background: var(--c-accent); color: var(--c-ink); border-color: var(--c-accent); }
+.section--blue .btn--primary:hover,
+.section--ink .btn--primary:hover { background: #a5c0ff; border-color: #a5c0ff; }
+.section--blue .btn--secondary,
+.section--ink .btn--secondary { color: #fff; border-color: #fff; }
+.section--blue .btn--secondary:hover,
+.section--ink .btn--secondary:hover { background: rgba(255, 255, 255, .14); }
+
+/* --------------------------------------------------------- Badge bloque */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .28em .7em;
+  border-radius: var(--radius-sm);
+  font: 600 .8rem/1 var(--font-display);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #fff;            /* texto blanco sobre color sólido (contraste AA) */
+  background: var(--c-ink);
+}
+.badge--b1 { background: var(--c-b1); }
+.badge--b2 { background: var(--c-b2); }
+.badge--b3 { background: var(--c-b3); }
+.badge--b4 { background: var(--c-b4); }
+.badge--b5 { background: var(--c-b5); }

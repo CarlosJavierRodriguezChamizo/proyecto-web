@@ -1,0 +1,131 @@
+/* =========================================================================
+   scrolly.css — Motor visual del scrollytelling del Bloque 1.
+   Panel "sticky" a la izquierda (el lienzo que evoluciona) + pasos de texto
+   que se desplazan a la derecha. La escena activa se marca con data-scene
+   en el contenedor y TODO el cambio visual se resuelve en CSS.
+   ========================================================================= */
+
+.scrolly { position: relative; }
+.scrolly__inner { display: grid; grid-template-columns: 1fr; gap: var(--sp-5); }
+@media (min-width: 920px) {
+  .scrolly__inner { grid-template-columns: 1.05fr 0.95fr; gap: var(--sp-7); }
+}
+
+/* Panel visual pegajoso */
+.scrolly__visual { position: relative; align-self: start; }
+@media (min-width: 920px) {
+  .scrolly__visual {
+    position: sticky; top: 72px; height: calc(100vh - 96px);
+    display: grid; place-items: center;
+  }
+}
+.scrolly__stage {
+  width: 100%; max-width: 620px; aspect-ratio: 76 / 60;
+  background: #fbfcff; border: 1px solid var(--c-line); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+}
+.scrolly__svg { width: 100%; height: 100%; display: block; }
+
+/* Pasos de texto */
+.scrolly__steps { display: flex; flex-direction: column; }
+.scrolly__step { min-height: 78vh; display: flex; align-items: center; }
+.scrolly__step:first-child { min-height: 60vh; }
+.scrolly__step:last-child { min-height: 70vh; }
+.scrolly__card {
+  background: var(--c-bg); border: 1px solid var(--c-line); border-left: 5px solid var(--c-accent);
+  border-radius: var(--radius); padding: var(--sp-5);
+  box-shadow: var(--shadow-sm); transition: opacity .25s, transform .25s;
+  opacity: .45; transform: translateY(8px);
+  width: 100%;
+}
+.scrolly__step.is-active .scrolly__card { opacity: 1; transform: none; box-shadow: var(--shadow); }
+.scrolly__kicker { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .06em; color: var(--c-accent-blue); font-size: .8rem; }
+.scrolly__card h3 { margin: var(--sp-1) 0 var(--sp-2); font-size: clamp(1.4rem, 2.4vw, 2rem); }
+.scrolly__card p { margin: 0; color: var(--c-body); font-size: 1.02rem; }
+
+/* Overlay de la escena 1 (el encargo), sobre el lienzo */
+.stage-overlay {
+  position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: var(--sp-3);
+  padding: var(--sp-6); background: var(--c-bg-blue); color: #fff;
+  opacity: 0; pointer-events: none; transition: opacity .35s;
+}
+.scrolly[data-scene="1"] .stage-overlay { opacity: 1; }
+.stage-overlay .o-q { font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 2rem); margin: 0; }
+.stage-overlay .o-kpis { display: flex; gap: var(--sp-6); justify-content: center; }
+.stage-overlay .o-num { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 3rem); color: var(--c-accent); line-height: 1; }
+.stage-overlay .o-lab { font-size: .8rem; color: var(--c-white-soft); }
+
+/* ------------------------------------------------------ Elementos del SVG */
+
+/* Marco de navegador — siempre visible */
+.w-frame__bar { fill: #eef1fa; }
+.w-frame__dot { fill: rgba(0, 19, 63, .25); }
+.w-frame__body { fill: #ffffff; stroke: var(--c-line); }
+
+/* Escena 2 — user flow (píldoras + flechas) */
+.w-flow { opacity: 0; transition: opacity .4s; }
+.scrolly[data-scene="2"] .w-flow { opacity: 1; }
+.w-flow__pill { fill: #e9eeff; stroke: #0047e9; stroke-width: 2; }
+.w-flow__pill--goal { fill: #0047e9; }
+.w-flow__label { font-family: var(--font-body); font-weight: 600; font-size: 13px; text-anchor: middle; fill: var(--c-ink); }
+.w-flow__label--goal { fill: #fff; }
+.w-flow__arrow { stroke: var(--c-ink-soft); stroke-width: 2; fill: none; marker-end: url(#flecha); }
+
+/* Escenas 3+ — wireframe (cajas grises) */
+.w-wire { opacity: 0; transition: opacity .45s; }
+.scrolly[data-scene="3"] .w-wire,
+.scrolly[data-scene="4"] .w-wire,
+.scrolly[data-scene="5"] .w-wire,
+.scrolly[data-scene="6"] .w-wire { opacity: 1; }
+.w-box { fill: #e8ecf7; stroke: rgba(0, 19, 63, .18); transition: fill .5s, stroke .5s; }
+.w-line { fill: rgba(0, 19, 63, .14); transition: fill .5s; }
+.w-cross { stroke: rgba(0, 19, 63, .2); stroke-width: 1.5; transition: opacity .5s; }
+
+/* Escena 4 — prototipo navegable (móvil + conexión + hotspot) */
+.w-proto { opacity: 0; transition: opacity .4s; }
+.scrolly[data-scene="4"] .w-proto { opacity: 1; }
+.scrolly[data-scene="5"] .w-proto,
+.scrolly[data-scene="6"] .w-proto { opacity: .35; }
+.w-proto__conn { stroke: #0047e9; stroke-width: 2.5; stroke-dasharray: 7 6; fill: none; marker-end: url(#flecha-azul); }
+.w-proto__phone { fill: #fff; stroke: var(--c-ink); stroke-width: 2.5; }
+.w-proto__screen { fill: #e9eeff; }
+.w-proto__hotspot { fill: rgba(0, 71, 233, .25); stroke: #0047e9; stroke-width: 2; }
+.scrolly[data-scene="4"] .w-proto__hotspot { animation: hotspot 1.6s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes hotspot {
+  0%   { transform: scale(.8); opacity: 1; }
+  70%  { transform: scale(1.35); opacity: .25; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* Escenas 5–6 — UI: la identidad visual de BBVA viste el wireframe.
+   (Azules corporativos BBVA solo DENTRO del lienzo, como contenido.) */
+.scrolly[data-scene="5"] .w-box--nav,
+.scrolly[data-scene="6"] .w-box--nav { fill: #072146; stroke: #072146; }
+.scrolly[data-scene="5"] .w-box--hero,
+.scrolly[data-scene="6"] .w-box--hero { fill: #004481; stroke: #004481; }
+.scrolly[data-scene="5"] .w-box--cta,
+.scrolly[data-scene="6"] .w-box--cta { fill: #5bbeff; stroke: #5bbeff; }
+.scrolly[data-scene="5"] .w-box--img,
+.scrolly[data-scene="6"] .w-box--img { fill: #d4edff; stroke: #5bbeff; }
+.scrolly[data-scene="5"] .w-cross,
+.scrolly[data-scene="6"] .w-cross { opacity: 0; }
+.scrolly[data-scene="5"] .w-line--onhero,
+.scrolly[data-scene="6"] .w-line--onhero { fill: rgba(255, 255, 255, .8); }
+.scrolly[data-scene="5"] .w-wire__logo,
+.scrolly[data-scene="6"] .w-wire__logo { opacity: 1; }
+.w-wire__logo {
+  font-family: var(--font-display); font-size: 15px; fill: #fff;
+  opacity: 0; transition: opacity .5s;
+}
+
+/* Escena 6 — cierre: brillo de acento alrededor del lienzo */
+.scrolly[data-scene="6"] .w-frame__glow { opacity: 1; }
+.w-frame__glow {
+  fill: none; stroke: var(--c-accent); stroke-width: 3;
+  opacity: 0; transition: opacity .5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w-flow, .w-wire, .w-proto, .w-box, .scrolly__card, .stage-overlay { transition: none; }
+  .scrolly[data-scene="4"] .w-proto__hotspot { animation: none; }
+}
