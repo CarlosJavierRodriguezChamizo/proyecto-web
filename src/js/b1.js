@@ -584,39 +584,6 @@ function cialdiniSection() {
   </section>`;
 }
 
-/* --------------------------------- Práctica: wireframe dentro de Figma */
-function practicaSection() {
-  return `<section class="section section--light" id="practica">
-    <div class="wrap">
-      <div class="teoria-head" data-reveal>
-        <span class="chip">Manos a la obra</span>
-        <h2>Construcción de un wireframe en Figma</h2>
-        <p class="lead">La práctica del bloque, alineada con el entregable TE2 del manual.</p>
-      </div>
-      <div class="grid grid--2" style="align-items:start">
-        <div data-reveal>${Card({ title: "Instrucciones", accent: true, body: `
-          <ul class="uxui__list" style="margin-top:var(--sp-2)">
-            <li>Partid del <strong>árbol de contenidos</strong> visto en la sección de arquitectura.</li>
-            <li>Al menos las <strong>5 pantallas mínimas</strong> del manual: inicio, servicios, sobre nosotros, casos de éxito, contacto.</li>
-            <li><strong>Mobile-first:</strong> empezad por el frame de móvil, no por desktop.</li>
-            <li>Un archivo de Figma <strong>compartido por grupo</strong>: todos editáis a la vez.</li>
-          </ul>` })}</div>
-        <div data-reveal>${Card({ title: "Cada pantalla debe tener", accent: true, body: `
-          <ul class="uxui__list" style="margin-top:var(--sp-2)">
-            <li><strong>Jerarquía clara</strong> de la información.</li>
-            <li><strong>CTA principal visible sin scroll.</strong></li>
-            <li>Al menos una <strong>funcionalidad del buyer persona</strong> (formulario, chat, simulador…).</li>
-            <li>Un principio de <strong>Cialdini aplicado de forma consciente.</strong></li>
-          </ul>` })}</div>
-      </div>
-      <div class="row" style="margin-top:var(--sp-5)" data-reveal>
-        ${Button({ label: "Abrir Figma", href: "https://figma.com", variant: "primary", extra: { target: "_blank", rel: "noopener noreferrer" } })}
-        ${Button({ label: "Ver el reto completo", href: "#reto", variant: "secondary" })}
-      </div>
-    </div>
-  </section>`;
-}
-
 /* ---------------------------------------------------- Conceptos clave */
 function conceptosSection() {
   return `<section class="section section--light">
@@ -636,13 +603,14 @@ function conceptosSection() {
   </section>`;
 }
 
+/* --------------- El reto BBVA (incluye la práctica del wireframe) */
 function retoSection() {
   return `<section class="section section--blue" id="reto">
     <div class="wrap reto">
       <div data-reveal>
-        <span class="chip">El reto ${escapeHtml(MODULO.cliente)} · Bloque 1</span>
+        <span class="chip">El reto ${escapeHtml(MODULO.cliente)} · Bloque 1 · Manos a la obra</span>
         <h2 class="reto__title">Diseña la landing de ${escapeHtml(MODULO.cliente)} en Figma</h2>
-        <p class="lead">${escapeHtml(bloque.reto)}</p>
+        <p class="lead">${escapeHtml(bloque.reto)} Alineado con el entregable TE2 del manual.</p>
         <ul class="reto__check">
           ${B1.retoChecklist.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}
         </ul>
@@ -651,10 +619,21 @@ function retoSection() {
           ${Button({ label: "Volver al hub", href: "/index.html", variant: "secondary" })}
         </div>
       </div>
-      <div class="gancho__kpis" data-reveal>
-        ${Kpi({ num: "2", label: "flujos navegables mínimos" })}
-        ${Kpi({ num: "×2", label: "wireframes: mobile y desktop" })}
-        ${Kpi({ num: "1", label: "entregable: " + bloque.entregable })}
+      <div class="stack" data-reveal>
+        ${Card({ title: "Cómo trabajarlo", body: `
+          <ul class="reto__check" style="font-size:.92rem">
+            <li>Partid del <strong>árbol de contenidos</strong> visto en la sección de arquitectura.</li>
+            <li>Al menos las <strong>5 pantallas mínimas</strong> del manual: inicio, servicios, sobre nosotros, casos de éxito, contacto.</li>
+            <li><strong>Mobile-first:</strong> empezad por el frame de móvil, no por desktop.</li>
+            <li>Un archivo de Figma <strong>compartido por grupo</strong>: todos editáis a la vez.</li>
+          </ul>` })}
+        ${Card({ title: "Cada pantalla debe tener", body: `
+          <ul class="reto__check" style="font-size:.92rem">
+            <li><strong>Jerarquía clara</strong> de la información.</li>
+            <li><strong>CTA principal visible sin scroll.</strong></li>
+            <li>Al menos una <strong>funcionalidad del buyer persona</strong> (formulario, chat, simulador…).</li>
+            <li>Un principio de <strong>Cialdini</strong> aplicado de forma consciente.</li>
+          </ul>` })}
       </div>
     </div>
   </section>`;
@@ -686,7 +665,6 @@ app.innerHTML = [
     nav: [
       { label: "La historia", href: "#historia" },
       { label: "Arquitectura", href: "#arquitectura" },
-      { label: "Práctica", href: "#practica" },
       { label: "El reto", href: "#reto" },
       { label: "Hub", href: "/index.html" },
     ],
@@ -736,7 +714,6 @@ app.innerHTML = [
   sistemaDisenoSection(),
   cialdiniSection(),
   conceptosSection(),
-  practicaSection(),
   retoSection(),
   recursosSection(),
 
