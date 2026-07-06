@@ -77,6 +77,81 @@
   transform: rotate(-45deg);
 }
 
+/* ------------------------------------------------ Diagramas de teoría */
+.d-svg { width: 100%; height: auto; display: block; margin-top: var(--sp-4); }
+.d-cap { font-size: .85rem; color: var(--c-ink-soft); margin-top: var(--sp-3); }
+.d-cap strong { color: var(--c-ink); }
+
+/* Leyenda de fases del timeline (chips de color) */
+.fases-leyenda { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-3); }
+.fase-chip {
+  display: inline-flex; align-items: center; gap: .45em;
+  font-size: .78rem; font-weight: 600; color: var(--c-ink-soft);
+}
+.fase-chip::before { content: ""; width: .85em; height: .85em; border-radius: 4px; background: var(--fase, var(--c-line)); }
+
+/* ------------------------------------------------ Tabla comparativa */
+.tablon { width: 100%; border-collapse: collapse; margin-top: var(--sp-5); font-size: .95rem; }
+.tablon th {
+  font-family: var(--font-display); letter-spacing: .04em; text-transform: uppercase;
+  font-size: .85rem; color: var(--c-ink); text-align: left;
+  padding: .6em .8em; border-bottom: 3px solid var(--c-accent-blue);
+}
+.tablon td { padding: .65em .8em; border-bottom: 1px solid var(--c-line); vertical-align: top; color: var(--c-ink-soft); }
+.tablon td:first-child { font-weight: 600; color: var(--c-ink); white-space: nowrap; }
+
+/* --------------------------------------- Nota de fuente (datos citados) */
+.src-note { font-size: .78rem; color: var(--c-ink-soft); margin-top: var(--sp-3); }
+
+/* --------------------------------------- Nota ligada al caso BBVA */
+.bbva-note {
+  background: rgba(20, 100, 244, .08);
+  border-left: 5px solid #1464f4;
+  border-radius: 10px;
+  padding: var(--sp-4) var(--sp-5);
+  margin-top: var(--sp-4);
+}
+.bbva-note strong { color: #1464f4; }
+
+/* --------------------------------------- Flujo de proceso (4 etapas) */
+.flow4 { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+@media (min-width: 920px) { .flow4 { grid-template-columns: repeat(4, 1fr) ; } }
+.flow4__etapa {
+  position: relative;
+  background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); padding: var(--sp-4) var(--sp-4) var(--sp-4);
+}
+.flow4__etapa.hoy { border: 2px solid var(--c-accent-blue); }
+.flow4__fid { display: block; height: 6px; border-radius: 4px; background: rgba(0, 71, 233, .18); margin-bottom: var(--sp-3); }
+.flow4__etapa:nth-child(2) .flow4__fid { background: rgba(0, 71, 233, .38); }
+.flow4__etapa:nth-child(3) .flow4__fid { background: rgba(0, 71, 233, .62); }
+.flow4__etapa:nth-child(4) .flow4__fid { background: var(--c-accent-blue); }
+.flow4__num { font-family: var(--font-display); font-size: .85rem; color: var(--c-accent-blue); }
+.flow4__etapa h4 { font-family: var(--font-display); font-size: 1.25rem; margin: .1em 0 .3em; color: var(--c-ink); }
+.flow4__etapa p { margin: 0; font-size: .88rem; color: var(--c-ink-soft); }
+.flow4__who {
+  display: inline-block; margin-top: var(--sp-3);
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--c-accent-blue);
+}
+
+/* --------------------------------------- Tarjeta "se comparte en clase" */
+.live-card {
+  background: var(--c-ink); color: #fff;
+  border-radius: var(--radius);
+  padding: var(--sp-6) var(--sp-5);
+  text-align: center;
+  margin-top: var(--sp-5);
+}
+.live-card__chip {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .45em 1.1em; border-radius: 999px; margin-bottom: var(--sp-3);
+  border: 1.5px dashed var(--c-accent); color: var(--c-accent);
+  font: 600 .78rem/1 var(--font-display); letter-spacing: .12em; text-transform: uppercase;
+}
+.live-card h4 { font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin: 0 0 .3em; }
+.live-card p { margin: 0; color: rgba(255, 255, 255, .75); font-size: .95rem; }
+
 /* ------------------------------------------------------------ Recursos */
 .recursos { display: grid; gap: var(--sp-3); max-width: 44rem; }
 .recurso {

@@ -14,7 +14,7 @@ export const PROFESOR = {
   nombre: "Carlos Chamizo",
   foto: "/assets/carlos-chamizo.png",
   linkedin: "https://www.linkedin.com/in/carloschamizo/",
-  email: "profesor@esic.edu", // placeholder — sustituir por el correo real
+  email: "carlosjavier.rodriguez@esic.edu",
 };
 
 /* Los 5 bloques del módulo. `reto` es el objetivo del proyecto BBVA.
@@ -97,9 +97,6 @@ export const B1 = {
     "Identidad visual BBVA aplicada: color, tipografía y componentes",
   ],
   recursos: [
-    { t: "Tutorial oficial · Figma para principiantes", href: "#" },
-    { t: "Comunidad de Figma · Plantillas y kits UI", href: "#" },
-    { t: "Guía de identidad visual de BBVA", href: "#" },
-    { t: "De wireframe a prototipo en 60 minutos", href: "#" },
+    { t: "Figma Academy · Tutoriales oficiales de diseño", href: "https://www.figma.com/community/design-tutorials/figma" },
   ],
 };
