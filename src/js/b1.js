@@ -375,7 +375,7 @@ function mobileFirstSection() {
       </div>
       <p class="src-note" data-reveal>Fuentes: StatCounter vía Statista (tráfico, Q1 2026) · DataReportal
       (penetración de uso) · Google Search Central (mobile-first indexing). El reparto de tráfico depende de la
-      metodología (filtrado de bots, sesiones vs. tiempo): <strong>cita siempre la fuente, nunca des el dato como dogma</strong>.</p>
+      metodología (filtrado de bots, sesiones vs. tiempo).</p>
       <div class="bbva-note" data-reveal>
         <p style="margin:0"><strong>Para la Gen Z de ${escapeHtml(MODULO.cliente)}:</strong> el segmento 18-24 es nativo móvil
         por definición. Cualquier fricción en el móvil (formularios largos, procesos complejos) pierde a este
