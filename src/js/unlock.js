@@ -10,7 +10,7 @@
    ========================================================================= */
 
 /* ➜ EDITA ESTE ARRAY para desbloquear bloques de forma permanente. */
-export const unlockedBlocks = [1];
+export const unlockedBlocks = [1, 2];
 
 /** ¿Está desbloqueado el bloque n? */
 export function isUnlocked(n) {

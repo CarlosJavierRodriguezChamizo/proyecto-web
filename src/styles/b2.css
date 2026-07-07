@@ -1,0 +1,99 @@
+/* =========================================================================
+   b2.css — Bloque 2: Tecnologías para la construcción de un sitio web.
+   Escenas del scrollytelling "¿Qué pasa cuando pulsas Enter?" (usa el motor
+   genérico de scrolly.css) + piezas propias: anatomía de URL y rejillas.
+   ========================================================================= */
+
+/* ------------------------------------------------ Escenas del lienzo */
+/* Cada grupo del SVG aparece solo en su escena; el marco de navegador
+   (.w-frame) y la barra de URL están siempre visibles. */
+.t2-url__lock { opacity: 0; transition: opacity .4s; }
+.scrolly[data-scene="3"] .t2-url__lock,
+.scrolly[data-scene="4"] .t2-url__lock,
+.scrolly[data-scene="5"] .t2-url__lock,
+.scrolly[data-scene="6"] .t2-url__lock { opacity: 1; }
+
+.t2-dns, .t2-ssl, .t2-host, .t2-front { opacity: 0; transition: opacity .45s; }
+.scrolly[data-scene="2"] .t2-dns { opacity: 1; }
+.scrolly[data-scene="3"] .t2-ssl { opacity: 1; }
+.scrolly[data-scene="4"] .t2-host { opacity: 1; }
+.scrolly[data-scene="5"] .t2-front,
+.scrolly[data-scene="6"] .t2-front { opacity: 1; }
+
+/* Textos y nodos genéricos de las escenas */
+.t2-label { font-family: var(--font-body); font-weight: 600; font-size: 13px; text-anchor: middle; fill: var(--c-ink); }
+.t2-cap { font-family: var(--font-body); font-size: 12px; text-anchor: middle; fill: rgba(0, 19, 63, .5); }
+.t2-node { fill: #e9eeff; stroke: var(--c-accent-blue); stroke-width: 2; }
+.t2-node--solid { fill: var(--c-accent-blue); stroke: none; }
+.t2-arrow { stroke: var(--c-ink-soft); stroke-width: 2; fill: none; marker-end: url(#t2-flecha); }
+.t2-arrow--dash { stroke-dasharray: 6 5; stroke: var(--c-accent-blue); marker-end: url(#t2-flecha-azul); }
+
+/* Escena 5: capas del frontend — el mini-sitio se colorea al llegar CSS */
+.t2-box { fill: #e8ecf7; stroke: rgba(0, 19, 63, .18); transition: fill .5s, stroke .5s; }
+.scrolly[data-scene="5"] .t2-box--nav,
+.scrolly[data-scene="6"] .t2-box--nav { fill: var(--c-ink); stroke: var(--c-ink); }
+.scrolly[data-scene="5"] .t2-box--hero,
+.scrolly[data-scene="6"] .t2-box--hero { fill: var(--c-accent-blue); stroke: var(--c-accent-blue); }
+.scrolly[data-scene="5"] .t2-box--cta,
+.scrolly[data-scene="6"] .t2-box--cta { fill: #6a2cf5; stroke: #6a2cf5; }
+
+/* JS: pulso de interacción sobre el CTA (solo mientras se explica) */
+.t2-pulse { fill: rgba(106, 44, 245, .3); stroke: #6a2cf5; stroke-width: 2; opacity: 0; }
+.scrolly[data-scene="5"] .t2-pulse {
+  opacity: 1;
+  animation: t2-pulse 1.6s ease-out infinite;
+  transform-origin: center; transform-box: fill-box;
+}
+@keyframes t2-pulse {
+  0%   { transform: scale(.75); opacity: 1; }
+  70%  { transform: scale(1.4); opacity: .2; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t2-dns, .t2-ssl, .t2-host, .t2-front, .t2-box, .t2-url__lock { transition: none; }
+  .scrolly[data-scene="5"] .t2-pulse { animation: none; }
+}
+
+/* ------------------------------------------------ Anatomía de una URL */
+.url-anat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: .15em;
+  margin-top: var(--sp-5);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  line-height: 1;
+}
+.url-anat__seg { text-align: center; }
+.url-anat__txt { display: block; padding: .18em .12em; border-radius: 8px; }
+.url-anat__seg small {
+  display: block;
+  margin-top: .55em;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  letter-spacing: .02em;
+}
+.url-anat__seg--proto .url-anat__txt { color: var(--c-ink-soft); }
+.url-anat__seg--sub .url-anat__txt { color: #6a2cf5; background: rgba(106, 44, 245, .08); }
+.url-anat__seg--dom .url-anat__txt { color: var(--c-accent-blue); background: var(--c-accent-soft); }
+.url-anat__seg--tld .url-anat__txt { color: var(--c-ink); background: rgba(0, 19, 63, .07); }
+
+/* --------------------------------------------- Variantes de rejilla */
+@media (min-width: 920px) {
+  .flow4--3 { grid-template-columns: repeat(3, 1fr); }
+  .flow4--5 { grid-template-columns: repeat(5, 1fr); }
+}
+/* Escalera de hosting: barra de "potencia" por nivel */
+.flow4--3 .flow4__etapa:nth-child(1) .flow4__fid { background: rgba(0, 71, 233, .22); }
+.flow4--3 .flow4__etapa:nth-child(2) .flow4__fid { background: rgba(0, 71, 233, .55); }
+.flow4--3 .flow4__etapa:nth-child(3) .flow4__fid { background: var(--c-accent-blue); }
+/* Flujo de 5 pasos: intensidad uniforme */
+.flow4--5 .flow4__etapa .flow4__fid { background: rgba(0, 71, 233, .35); }
+.flow4--5 .flow4__etapa:last-child .flow4__fid { background: var(--c-accent-blue); }
+
+/* Tarjeta destacada dentro de una rejilla (p. ej. Claude Code) */
+.card--destacada { border: 2px solid var(--c-accent-blue); }
